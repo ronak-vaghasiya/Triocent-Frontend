@@ -15,11 +15,25 @@ const ContactForm = () => {
   const [touched, setTouched] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
+    const { id, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [id]: value }));
+
+    // Validate only the current field
     if (touched) {
-      // Validate as user types if already submitted once
-      validateForm();
+      validateField(id, value);
     }
+  };
+
+  const validateField = (field, value) => {
+    const newErrors = { ...errors };
+
+    if (!value && (field === "name" || field === "email" || field === "phone")) {
+      newErrors[field] = `${field.charAt(0).toUpperCase() + field.slice(1)} is required.`;
+    } else {
+      delete newErrors[field];
+    }
+
+    setErrors(newErrors);
   };
 
   const validateForm = () => {
@@ -35,9 +49,9 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setTouched(true); // Mark the form as touched when submitting
+    setTouched(true);
 
-    if (!validateForm()) return; // Prevent form submission if validation fails
+    if (!validateForm()) return;
 
     try {
       const response = await fetch("http://localhost:5000/api/contact", {
@@ -54,10 +68,11 @@ const ContactForm = () => {
         setErrors({});
         setTouched(false);
       } else {
-        alert("Failed to submit form.");
+        const errorData = await response.json();
+        alert(`Failed to submit form: ${errorData.message || "Unknown error"}`);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Submission error:", error);
     }
   };
 
@@ -82,6 +97,7 @@ const ContactForm = () => {
               className="text-[14px] font-semibold border-b border-li-gray placeholder-li-gray outline-none focus:placeholder-dark-blue focus:border-dark-blue py-2"
               value={formData.name}
               onChange={handleChange}
+              aria-invalid={touched && errors.name ? "true" : "false"}
             />
             {touched && errors.name && <span className="text-red-500 text-xs mt-1">{errors.name}</span>}
           </div>
@@ -93,6 +109,7 @@ const ContactForm = () => {
               className="text-[14px] border-b font-semibold border-li-gray placeholder-li-gray outline-none focus:placeholder-dark-blue focus:border-dark-blue py-2"
               value={formData.email}
               onChange={handleChange}
+              aria-invalid={touched && errors.email ? "true" : "false"}
             />
             {touched && errors.email && <span className="text-red-500 text-xs mt-1">{errors.email}</span>}
           </div>
@@ -104,6 +121,7 @@ const ContactForm = () => {
               className="text-[14px] border-b font-semibold border-li-gray placeholder-li-gray outline-none focus:placeholder-dark-blue focus:border-dark-blue py-2"
               value={formData.phone}
               onChange={handleChange}
+              aria-invalid={touched && errors.phone ? "true" : "false"}
             />
             {touched && errors.phone && <span className="text-red-500 text-xs mt-1">{errors.phone}</span>}
           </div>

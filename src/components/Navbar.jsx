@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import Logo from "../assets/Logo.png";
+import Logo from "../assets/logo-white.png";
 import Button from "./Button";
 
 const Navbar = () => {

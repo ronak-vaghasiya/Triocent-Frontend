@@ -79,7 +79,7 @@ const FeedbackForm = () => {
 
       if (response.ok) {
         console.log("Feedback submitted successfully");
-        window.alert("Feedback submitted successfully!"); // Alert for successful submission
+        window.alert("Feedback submitted successfully!");
         setFormData(initialFormState);
         setTouched({});
         setErrors({});
@@ -251,7 +251,7 @@ const FeedbackForm = () => {
       <div>
         <button
           type="submit"
-          className="bg-dark-blue hover:bg-green text-white w-full h-[55px] rounded-full text-sm font-semibold mt-6"
+          className="bg-blue hover:bg-li-green text-white w-full h-[55px] rounded-full text-sm font-semibold mt-6"
         >
           Submit
         </button>

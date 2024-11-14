@@ -6,6 +6,7 @@ const About = () => {
     <div>
       <BgHeader title={"About Us"} section={"about"}/>
       <AboutSection/>
+
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import BgHeader from "../components/BgHeader"
+import Footer from "../components/Footer"
 import ContactSection from "../components/sections/ContactSection"
 
 const ContactUs = () => {
@@ -6,7 +7,7 @@ const ContactUs = () => {
     <div>
       <BgHeader title={"Contact Us"} section={"contact"} />
       <ContactSection />
-      {/* product name logo line */}
+      <Footer />
     </div>
   )
 }

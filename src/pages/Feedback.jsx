@@ -1,6 +1,7 @@
 import BgHeader from "../components/BgHeader";
 import FeedbackForm from "../components/FeedbackForm";
 import Heading from "../components/Heading";
+import Footer from "../components/Footer";
 
 const Feedback = () => {
   return (
@@ -27,6 +28,8 @@ const Feedback = () => {
             <div><FeedbackForm/></div>
         </div>
       </div>
+
+      <div className="mt-[100px]"><Footer/></div>
     </div>
   );
 };

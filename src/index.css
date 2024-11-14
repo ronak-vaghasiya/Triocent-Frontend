@@ -1,11 +1,13 @@
 @font-face {
     font-family: "Sora";
     src: url(../public/fonts/Sora.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Ubuntu";
     src: url(../public/fonts/Ubuntu.ttf);
+    font-display: swap;
 }
 
 @tailwind base;

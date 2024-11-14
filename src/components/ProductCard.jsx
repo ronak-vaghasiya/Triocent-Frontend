@@ -59,7 +59,7 @@ const ProductCard = () => {
           </div>
 
           {/* Product Name */}
-          <div className="text-lg md:text-[18px] font-medium text-dark-blue pt-1 text-center">
+          <div className="text-lg md:text-[18px] text-dark-blue font-semibold pt-1 text-center">
             {item.name}
           </div>
 

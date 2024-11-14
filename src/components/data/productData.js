@@ -3,7 +3,7 @@ import {
   Product2,
   Product3,
   Product4,
-} from "../../assets/ProductImages";
+} from "./ProductImages";
 
 export const productData = [
   {
